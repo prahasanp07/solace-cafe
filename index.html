@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Solace Café Bangalore — Specialty coffee, artisan food, and a cozy ambiance in the heart of Bangalore." />
+  <title>Solace Café — Bangalore</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LOADING SCREEN
+  ════════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-logo">Solace</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       CUSTOM CURSOR
+  ════════════════════════════════════════ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════ -->
+  <nav id="mainNav">
+    <a href="#hero" class="nav-logo">Solace Café</a>
+
+    <ul class="nav-links">
+      <li><a href="#about">Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+
+    <button class="nav-reserve" onclick="document.getElementById('visit').scrollIntoView({ behavior: 'smooth' })">
+      Reserve a Table
+    </button>
+
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       MOBILE NAV OVERLAY
+  ════════════════════════════════════════ -->
+  <div id="mobileNav">
+    <a href="#about" onclick="toggleMenu()">Story</a>
+    <a href="#menu" onclick="toggleMenu()">Menu</a>
+    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#visit" onclick="toggleMenu()">Visit</a>
+    <button class="nav-reserve" style="margin-top: 16px;"
+      onclick="toggleMenu(); document.getElementById('visit').scrollIntoView({ behavior: 'smooth' })">
+      Reserve a Table
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Specialty Coffee · Bangalore</div>
+      <h1 class="hero-title">Sol<em>ace</em></h1>
+      <p class="hero-sub">Where every sip finds its stillness</p>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MARQUEE STRIP
+  ════════════════════════════════════════ -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item"><span>Single Origin Coffee</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Artisan Brewing</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Cozy Ambiance</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Handcrafted Pastries</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Bangalore's Solace</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Slow Sips</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Gentle Mornings</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Community Space</span> <span class="marquee-dot"></span></div>
+      <!-- Duplicate set for seamless infinite loop -->
+      <div class="marquee-item"><span>Single Origin Coffee</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Artisan Brewing</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Cozy Ambiance</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Handcrafted Pastries</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Bangalore's Solace</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Slow Sips</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Gentle Mornings</span> <span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Community Space</span> <span class="marquee-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════════ -->
+  <section id="about">
+
+    <!-- Left: Visual -->
+    <div class="about-visual reveal-left">
+      <img class="about-img-main" src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&q=80"
+        alt="Solace Café Interior" loading="lazy" />
+      <img class="about-img-accent" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80"
+        alt="Coffee detail" loading="lazy" />
+      <div class="about-badge">
+        <div class="num">BLR</div>
+        <div class="label">Café</div>
+      </div>
+    </div>
+
+    <!-- Right: Text -->
+    <div class="about-text reveal-right">
+      <div class="section-tag">Our Story</div>
+      <h2>A <em>refuge</em> in the<br />heart of the city</h2>
+      <br />
+      <p>
+        Solace Café was born from a simple belief —
+        <strong>that everyone deserves a quiet corner</strong>
+        to exhale, sip something beautiful, and feel at peace.
+        Nestled in Bangalore's vibrant heartbeat, we are that corner.
+      </p>
+      <p>
+        From ethically sourced single-origin beans brewed with care,
+        to warm wooden nooks where conversations bloom — every detail
+        at Solace is designed to give you exactly what the name promises.
+      </p>
+
+      <!-- Animated counters -->
+      <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-num" data-count="12">0</div>
+          <div class="stat-label">Coffee Varieties</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="4.8">0</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="500">0</div>
+          <div class="stat-label">Happy Guests / Week</div>
+        </div>
+      </div>
+
+      <a href="#visit" class="cta-link">Find us <span class="arrow">→</span></a>
+    </div>
+
+    </div>
+
+    <button class="test-chevron test-prev" aria-label="Previous testimonial">‹</button>
+    <button class="test-chevron test-next" aria-label="Next testimonial">›</button>
+
+    <div class="test-carousel-dots" aria-hidden="false"></div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MENU
+  ════════════════════════════════════════ -->
+  <section id="menu">
+
+    <div class="menu-header">
+      <div>
+        <div class="section-tag">What We Brew</div>
+        <h2>The <em>Menu</em></h2>
+        <p class="menu-intro">
+          Thoughtfully crafted with single-origin beans and seasonal ingredients.
+          Every cup, every bite — made with intention.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tab buttons -->
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchTab(this, 'coffee')">Coffee</button>
+      <button class="menu-tab" onclick="switchTab(this, 'food')">Kitchen</button>
+      <button class="menu-tab" onclick="switchTab(this, 'cold')">Cold Brews</button>
+      <button class="menu-tab" onclick="switchTab(this, 'bakery')">Bakery</button>
+    </div>
+
+    <!-- ── Coffee ── -->
+    <div class="menu-panel active" id="panel-coffee">
+      <div class="menu-grid reveal">
+        <div class="menu-item d1">
+          <div class="item-top">
+            <div class="item-name">Solace Pour Over</div>
+            <div class="item-price">₹220</div>
+          </div>
+          <div class="item-desc">Our signature single-origin pour over, slow-dripped through a Hario V60. Bright,
+            florals, lingering sweetness.</div>
+          <span class="item-tag">Signature</span>
+        </div>
+        <div class="menu-item d2">
+          <div class="item-top">
+            <div class="item-name">Flat White</div>
+            <div class="item-price">₹190</div>
+          </div>
+          <div class="item-desc">Velvety micro-foamed milk over a double ristretto. Smooth, bold, deeply satisfying.
+          </div>
+        </div>
+        <div class="menu-item d3">
+          <div class="item-top">
+            <div class="item-name">Cortado</div>
+            <div class="item-price">₹180</div>
+          </div>
+          <div class="item-desc">Equal parts espresso and warm milk. The purist's choice — nothing hidden, nothing lost.
+          </div>
+        </div>
+        <div class="menu-item d4">
+          <div class="item-top">
+            <div class="item-name">Cardamom Latte</div>
+            <div class="item-price">₹210</div>
+          </div>
+          <div class="item-desc">House-made cardamom syrup in a full-bodied latte. A gentle nod to Bangalore's roots.
+          </div>
+          <span class="item-tag">House Special</span>
+        </div>
+        <div class="menu-item d5">
+          <div class="item-top">
+            <div class="item-name">Filter Kaapi</div>
+            <div class="item-price">₹120</div>
+          </div>
+          <div class="item-desc">Traditional South Indian filter coffee, served in a davara and tumbler. A homage to
+            mornings.</div>
+        </div>
+        <div class="menu-item d2">
+          <div class="item-top">
+            <div class="item-name">Oat Milk Cappuccino</div>
+            <div class="item-price">₹220</div>
+          </div>
+          <div class="item-desc">Plant-forward cappuccino with creamy oat milk. Light on the planet, full on flavour.
+          </div>
+          <span class="item-tag">Vegan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Kitchen ── -->
+    <div class="menu-panel" id="panel-food">
+      <div class="menu-grid reveal">
+        <div class="menu-item d1">
+          <div class="item-top">
+            <div class="item-name">Avocado Toast</div>
+            <div class="item-price">₹280</div>
+          </div>
+          <div class="item-desc">Sourdough, smashed avo, cherry tomatoes, microgreens, and a sprinkle of chilli flakes.
+          </div>
+          <span class="item-tag">All Day</span>
+        </div>
+        <div class="menu-item d2">
+          <div class="item-top">
+            <div class="item-name">Shakshuka Bowl</div>
+            <div class="item-price">₹320</div>
+          </div>
+          <div class="item-desc">Eggs poached in spiced tomato sauce with fresh herbs. Warm, earthy, restorative.</div>
+        </div>
+        <div class="menu-item d3">
+          <div class="item-top">
+            <div class="item-name">Pesto Pasta</div>
+            <div class="item-price">₹340</div>
+          </div>
+          <div class="item-desc">Hand-folded pasta tossed in house-made basil pesto with parmesan and toasted pine nuts.
+          </div>
+          <span class="item-tag">Vegetarian</span>
+        </div>
+        <div class="menu-item d4">
+          <div class="item-top">
+            <div class="item-name">Chicken Sandwich</div>
+            <div class="item-price">₹360</div>
+          </div>
+          <div class="item-desc">Slow-roasted chicken, garlic aioli, pickled onions, and rocket on house-baked focaccia.
+          </div>
+        </div>
+        <div class="menu-item d5">
+          <div class="item-top">
+            <div class="item-name">Granola Bowl</div>
+            <div class="item-price">₹240</div>
+          </div>
+          <div class="item-desc">House-toasted granola, seasonal fruit, coconut yogurt, and a drizzle of local
+            wildflower honey.</div>
+          <span class="item-tag">Vegan</span>
+        </div>
+        <div class="menu-item d2">
+          <div class="item-top">
+            <div class="item-name">French Toast</div>
+            <div class="item-price">₹260</div>
+          </div>
+          <div class="item-desc">Brioche dipped in cinnamon custard, pan-fried golden, with maple and fresh berries.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Cold Brews ── -->
+    <div class="menu-panel" id="panel-cold">
+      <div class="menu-grid reveal">
+        <div class="menu-item d1">
+          <div class="item-top">
+            <div class="item-name">Cold Brew</div>
+            <div class="item-price">₹200</div>
+          </div>
+          <div class="item-desc">18-hour cold-steeped Arabica. Smooth, chocolatey, low-acid. The ultimate warm-day
+            companion.</div>
+          <span class="item-tag">Signature</span>
+        </div>
+        <div class="menu-item d2">
+          <div class="item-top">
+            <div class="item-name">Orange Espresso Tonic</div>
+            <div class="item-price">₹230</div>
+          </div>
+          <div class="item-desc">Double espresso over tonic water with a squeeze of blood orange. Bitter, citrus,
+            sparkling.</div>
+        </div>
+        <div class="menu-item d3">
+          <div class="item-top">
+            <div class="item-name">Vietnamese Iced Coffee</div>
+            <div class="item-price">₹180</div>
+          </div>
+          <div class="item-desc">Strong drip coffee over ice with condensed milk. Rich, sweet, addictive — a beloved
+            classic.</div>
+        </div>
+        <div class="menu-item d4">
+          <div class="item-top">
+            <div class="item-name">Mango Shakerato</div>
+            <div class="item-price">₹240</div>
+          </div>
+          <div class="item-desc">Espresso shaken over ice with Alphonso mango pulp. A Bangalore summer in a glass.</div>
+          <span class="item-tag">Seasonal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bakery ── -->
+    <div class="menu-panel" id="panel-bakery">
+      <div class="menu-grid reveal">
+        <div class="menu-item d1">
+          <div class="item-top">
+            <div class="item-name">Almond Croissant</div>
+            <div class="item-price">₹180</div>
+          </div>
+          <div class="item-desc">Butter-laminated, twice-baked with almond cream and flaked almonds. Flaky beyond
+            belief.</div>
+          <span class="item-tag">Bestseller</span>
+        </div>
+        <div class="menu-item d2">
+          <div class="item-top">
+            <div class="item-name">Banana Walnut Loaf</div>
+            <div class="item-price">₹150</div>
+          </div>
+          <div class="item-desc">A thick slice of our daily-baked banana bread. Moist, warming, nothing fussy about it.
+          </div>
+        </div>
+        <div class="menu-item d3">
+          <div class="item-top">
+            <div class="item-name">Cardamom Kouign</div>
+            <div class="item-price">₹200</div>
+          </div>
+          <div class="item-desc">Caramelised, flaky, buttery Breton cake infused with Keralan cardamom. Purely
+            indulgent.</div>
+          <span class="item-tag">House Special</span>
+        </div>
+        <div class="menu-item d4">
+          <div class="item-top">
+            <div class="item-name">Tiramisu Pot</div>
+            <div class="item-price">₹220</div>
+          </div>
+          <div class="item-desc">House-made mascarpone, espresso-soaked ladyfingers, dusted cocoa. Dessert-as-comfort.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       GALLERY
+  ════════════════════════════════════════ -->
+  <section id="gallery">
+
+    <div class="gallery-header">
+      <div class="section-tag reveal">In the Moment</div>
+      <h2 class="reveal d1">Life at <em>Solace</em></h2>
+    </div>
+
+    <div class="gallery-scroll-wrap">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-card gc1">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" alt="Coffee art"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">A morning pour</span></div>
+        </div>
+        <div class="gallery-card gc3">
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=700&q=80" alt="Café interior"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Find your corner</span></div>
+        </div>
+        <div class="gallery-card gc2">
+          <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&q=80" alt="Avocado toast"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Avocado toast</span></div>
+        </div>
+        <div class="gallery-card gc4">
+          <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=560&q=80" alt="Latte art"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">The daily latte</span></div>
+        </div>
+        <div class="gallery-card gc5">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=640&q=80" alt="Café bar"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Behind the bar</span></div>
+        </div>
+        <div class="gallery-card gc2">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Pastry" loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Fresh from the oven</span></div>
+        </div>
+        <div class="gallery-card gc7">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=680&q=80" alt="Reading nook"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Slow afternoons</span></div>
+        </div>
+        <!-- Duplicate set for seamless infinite loop -->
+        <div class="gallery-card gc1">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" alt="Coffee art"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">A morning pour</span></div>
+        </div>
+        <div class="gallery-card gc3">
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=700&q=80" alt="Café interior"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Find your corner</span></div>
+        </div>
+        <div class="gallery-card gc2">
+          <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=500&q=80" alt="Avocado toast"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Avocado toast</span></div>
+        </div>
+        <div class="gallery-card gc4">
+          <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=560&q=80" alt="Latte art"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">The daily latte</span></div>
+        </div>
+        <div class="gallery-card gc5">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=640&q=80" alt="Café bar"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Behind the bar</span></div>
+        </div>
+        <div class="gallery-card gc2">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Pastry" loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Fresh from the oven</span></div>
+        </div>
+        <div class="gallery-card gc7">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=680&q=80" alt="Reading nook"
+            loading="lazy" />
+          <div class="gallery-card-overlay"><span class="gallery-caption">Slow afternoons</span></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SPECIALS
+  ════════════════════════════════════════ -->
+  <section id="specials">
+
+    <!-- Left: List -->
+    <div class="specials-list">
+      <div class="section-tag reveal">Chef's Picks</div>
+      <h2 class="reveal d1">This <em>Season's</em><br />Favourites</h2>
+      <br /><br />
+      <div class="special-card reveal d1">
+        <div class="sc-num">01</div>
+        <div class="sc-content">
+          <div class="sc-name">Rose &amp; Honey Latte</div>
+          <div class="sc-desc">House-made rose syrup, wildflower honey, and single-origin espresso. Delicate, floral,
+            unforgettable.</div>
+        </div>
+      </div>
+      <div class="special-card reveal d2">
+        <div class="sc-num">02</div>
+        <div class="sc-content">
+          <div class="sc-name">Mushroom Toast</div>
+          <div class="sc-desc">Sautéed wild mushrooms on thick sourdough with truffle oil, thyme, and a soft-poached
+            egg.</div>
+        </div>
+      </div>
+      <div class="special-card reveal d3">
+        <div class="sc-num">03</div>
+        <div class="sc-content">
+          <div class="sc-name">Mango Cold Brew Float</div>
+          <div class="sc-desc">Cold brew concentrate, vanilla gelato, and fresh Alphonso mango. Summer in one glass.
+          </div>
+        </div>
+      </div>
+      <div class="special-card reveal d4">
+        <div class="sc-num">04</div>
+        <div class="sc-content">
+          <div class="sc-name">Brown Butter Financier</div>
+          <div class="sc-desc">Nutty, golden French almond cake. Crisp edges, soft centre, extraordinary with an
+            Americano.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Visual -->
+    <div class="special-visual reveal-right">
+      <img class="special-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
+        alt="Seasonal specials" loading="lazy" />
+      <div class="special-float">
+        <div class="sf-title">Season's Pick</div>
+        <div class="sf-name">Rose &amp; Honey Latte</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TESTIMONIALS
+  ════════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="section-tag reveal">Voices</div>
+    <h2 class="reveal d1">What <em>Guests</em> Say</h2>
+
+    <div class="testimonials-grid">
+      <div class="test-card reveal d1">
+        <img class="test-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60"
+          alt="Guest avatar" loading="lazy" />
+        <blockquote class="test-quote">“A sanctuary in the city — the coffee, the light, the hush. I come here to
+          think.”</blockquote>
+        <div class="test-author">— Ananya R., Designer</div>
+      </div>
+
+      <div class="test-card reveal d2">
+        <img class="test-avatar" src="https://images.unsplash.com/photo-1545996124-1b1112c8f1f4?w=200&q=60"
+          alt="Guest avatar" loading="lazy" />
+        <blockquote class="test-quote">“Hands-down the best pour-over in Bangalore. Warm staff and gentle mornings every
+          visit.”</blockquote>
+        <div class="test-author">— Michael K., Barista Enthusiast</div>
+      </div>
+
+      <div class="test-card reveal d3">
+        <img class="test-avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=200&q=60"
+          alt="Guest avatar" loading="lazy" />
+        <blockquote class="test-quote">“Perfect place to work or unwind. The pastries are absurdly good — try the almond
+          croissant.”</blockquote>
+        <div class="test-author">— Priya S., Food Writer</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       AMBIANCE / PARALLAX QUOTE
+  ════════════════════════════════════════ -->
+  <section id="ambiance">
+    <div class="ambiance-bg" id="ambianceBg"></div>
+    <div class="ambiance-overlay"></div>
+    <div class="ambiance-content">
+      <p class="ambiance-quote reveal">
+        "Some places are made of walls and chairs.<br />
+        Solace is made of moments and stillness."
+      </p>
+      <p class="ambiance-attr reveal d2">— A guest, 2026</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       VISIT
+  ════════════════════════════════════════ -->
+  <section id="visit">
+    <div class="section-tag reveal">Come Find Us</div>
+    <h2 class="reveal d1">Plan Your <em>Visit</em></h2>
+
+    <div class="visit-grid">
+
+      <div class="visit-card reveal d1">
+        <div class="visit-icon">☕</div>
+        <h3>Hours</h3>
+        <p>
+          Monday – Friday<br />7:30 AM – 9:00 PM
+          <br /><br />
+          Saturday – Sunday<br />8:00 AM – 10:00 PM
+          <br /><br />
+          <em style="color: var(--terracotta); font-size: 13px;">Breakfast served until 12 PM</em>
+        </p>
+      </div>
+
+      <div class="visit-card reveal d2">
+        <div class="visit-icon">📍</div>
+        <h3>Find Us</h3>
+        <p>
+          Solace Café<br />
+          Bangalore, Karnataka
+          <br /><br />
+          <a href="https://maps.app.goo.gl/h6S9VRtVhSFpbXMV9" target="_blank" rel="noopener">
+            Open in Google Maps →
+          </a>
+          <br /><br />
+          Parking available nearby.<br />Metro-accessible location.
+        </p>
+      </div>
+
+      <div class="visit-card reveal d3">
+        <div class="visit-icon">📞</div>
+        <h3>Reach Out</h3>
+        <p>
+          Reservations &amp; Enquiries<br /><br />
+          <a href="https://www.instagram.com/solace.cafeblr" target="_blank" rel="noopener">
+            @solace.cafeblr
+          </a><br />
+          on Instagram
+          <br /><br />
+          Walk-ins always welcome.<br />Groups of 6+ please book ahead.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MAP EMBED
+  ════════════════════════════════════════ -->
+  <div id="map-section">
+    <iframe class="map-embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9885!2d77.5945!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjgiTiA3N8KwMzUnNDAuMiJF!5e0!3m2!1sen!2sin!4v1234567890"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Solace Café Location">
+    </iframe>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <span class="logo">Solace Café</span>
+        <p>
+          A quiet corner for slow sips and gentle days. Specialty coffee,
+          handcrafted food, and warm company — all in the heart of Bangalore.
+        </p>
+        <div class="social-links" style="margin-top: 24px;">
+          <a href="https://www.instagram.com/solace.cafeblr" target="_blank" rel="noopener" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="#" title="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a href="https://maps.app.goo.gl/h6S9VRtVhSFpbXMV9" target="_blank" rel="noopener" title="Google Maps">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#menu">Coffee</a></li>
+          <li><a href="#menu">Kitchen</a></li>
+          <li><a href="#menu">Cold Brews</a></li>
+          <li><a href="#menu">Bakery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#specials">Specials</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li><a>Mon – Fri: 7:30 – 21:00</a></li>
+          <li><a>Sat – Sun: 8:00 – 22:00</a></li>
+          <li style="margin-top: 12px;">
+            <a href="https://www.instagram.com/solace.cafeblr" target="_blank" rel="noopener">
+              @solace.cafeblr
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Solace Café, Bangalore. All rights reserved.</span>
+      <span>Crafted with care </span>
+      <span>Designed & Created by PraGana Innovations</span>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       MAIN JAVASCRIPT (loaded at bottom)
+  ════════════════════════════════════════ -->
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
