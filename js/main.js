@@ -298,3 +298,106 @@ function initTestimonialsCarousel() {
 document.addEventListener('DOMContentLoaded', initTestimonialsCarousel);
 // Also init after load (in case fonts/images change layout)
 window.addEventListener('load', initTestimonialsCarousel);
+
+
+/* ─── DISH MODAL: open/close, populate, zoom on scroll, swipe-down to close ─── */
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('dishModal');
+  if (!modal) return;
+
+  const modalContent = modal.querySelector('.modal-content');
+  const closeBtn = modal.querySelector('.close-btn');
+  const titleEl = modal.querySelector('.dish-title');
+  const priceEl = modal.querySelector('.dish-price');
+  const tagEl = modal.querySelector('.dish-tag');
+  const descEl = modal.querySelector('.dish-desc');
+  const model = modal.querySelector('#dishModel');
+
+  function openModal(data = {}) {
+    if (data.title) titleEl.textContent = data.title;
+    if (data.price) priceEl.textContent = data.price;
+    tagEl.textContent = data.tag || '';
+    if (data.desc) descEl.textContent = data.desc;
+    if (data.modelSrc && model) model.setAttribute('src', data.modelSrc);
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    modalContent.style.transform = 'translateY(0)';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    if (model) model.style.transform = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (ev) => {
+    if (ev.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') closeModal(); });
+
+  // Open modal from menu items
+  document.querySelectorAll('.menu-item').forEach((item) => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const data = {
+        title: item.querySelector('.item-name')?.textContent?.trim() || 'Dish',
+        price: item.querySelector('.item-price')?.textContent?.trim() || '',
+        tag: item.querySelector('.item-tag')?.textContent?.trim() || '',
+        desc: item.querySelector('.item-desc')?.textContent?.trim() || '',
+        modelSrc: item.dataset.model || null,
+      };
+      openModal(data);
+    });
+  });
+
+  // Zoom on scroll (subtle scale)
+  let currentScale = 1;
+  const minScale = 0.96;
+  const maxScale = 1.06;
+  const scaleStep = 0.0009;
+  const viewerWrap = modal.querySelector('.viewer-container');
+  viewerWrap.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY;
+    currentScale = Math.max(minScale, Math.min(maxScale, currentScale - delta * scaleStep));
+    if (model) model.style.transform = `scale(${currentScale})`;
+  }, { passive: false });
+
+  // Touch: swipe-down to close
+  let touchStartY = 0;
+  let touchCurrentY = 0;
+  modalContent.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+    modalContent.classList.add('dragging');
+  }, { passive: true });
+
+  modalContent.addEventListener('touchmove', (e) => {
+    touchCurrentY = e.touches[0].clientY;
+    const dy = Math.max(0, touchCurrentY - touchStartY);
+    modalContent.style.transform = `translateY(${dy}px)`;
+  }, { passive: true });
+
+  modalContent.addEventListener('touchend', () => {
+    modalContent.classList.remove('dragging');
+    const dy = touchCurrentY - touchStartY;
+    modalContent.style.transition = '';
+    if (dy > 120) {
+      closeModal();
+    } else {
+      modalContent.style.transform = '';
+    }
+    touchStartY = touchCurrentY = 0;
+  });
+
+  // Buttons inside modal (placeholder actions)
+  modal.querySelector('.call-btn')?.addEventListener('click', () => {
+    const tel = 'tel:+919000000000';
+    window.open(tel);
+  });
+  modal.querySelector('.dir-btn')?.addEventListener('click', () => {
+    window.open('https://maps.app.goo.gl/6DUScAwwaL7NU5WW8', '_blank');
+  });
+
+});

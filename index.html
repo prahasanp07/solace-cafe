@@ -406,6 +406,12 @@
 
   </section>
 
+  <!-- <div id="menu">
+    <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+      ios-src="https://modelviewer.dev/shared-assets/models/Astronaut.usdz" alt="A 3D model of an astronaut" ar
+      auto-rotate camera-controls></model-viewer>
+  </div> -->
+
   <!-- ═══════════════════════════════════════
        GALLERY
   ════════════════════════════════════════ -->
@@ -656,10 +662,6 @@
        MAP EMBED
   ════════════════════════════════════════ -->
   <div id="map-section">
-    <!-- <iframe class="map-embed"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9885!2d77.5945!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjgiTiA3N8KwMzUnNDAuMiJF!5e0!3m2!1sen!2sin!4v1234567890"
-      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Solace Café Location">
-    </iframe> -->
 
     <iframe class="map-embed"
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.607292095282!2d77.5756415!3d12.868622099999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6bbcf6182287%3A0xce81a8186e7abac!2sSolace%20Cafe!5e0!3m2!1sen!2sin!4v1776406596287!5m2!1sen!2sin"
@@ -747,6 +749,52 @@
        MAIN JAVASCRIPT (loaded at bottom)
   ════════════════════════════════════════ -->
   <script src="js/main.js"></script>
+
+  <!-- ═══════════════════════════════════════
+      3d Interactive Dish preview (model-viewer)
+  ════════════════════════════════════════ -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <!-- ═══════════════════════════════════════
+      DISH MODAL (3D interactive preview)
+  ════════════════════════════════════════ -->
+  <div class="modal" id="dishModal" aria-hidden="true">
+    <div class="modal-content">
+
+      <!-- Close -->
+      <button class="close-btn" aria-label="Close modal">&times;</button>
+
+      <!-- Viewer -->
+      <div class="viewer-container">
+        <model-viewer id="dishModel" src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+          ios-src="https://modelviewer.dev/shared-assets/models/Astronaut.usdz" alt="3D preview" ar camera-controls
+          auto-rotate touch-action="pan-y" exposure="1">
+        </model-viewer>
+        <div class="hint">👆 Scroll to explore</div>
+      </div>
+
+      <!-- Info -->
+      <div class="dish-info">
+        <div class="top-row">
+          <h2 class="dish-title">Truffle Mushroom Pasta</h2>
+          <span class="price dish-price">₹320</span>
+        </div>
+
+        <span class="tag dish-tag">⭐ Chef’s Special</span>
+
+        <p class="desc dish-desc">
+          Creamy Italian pasta infused with truffle oil and sautéed mushrooms.
+        </p>
+
+        <div class="actions">
+          <button class="primary call-btn">📞 Call</button>
+          <button class="secondary dir-btn">📍 Directions</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 
 </body>
 
